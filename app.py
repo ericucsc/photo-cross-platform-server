@@ -14,7 +14,7 @@ def create_app():
 
     # dictionary to temporarily store session_d and photos
     session_photo_map = {
-        "test": ["dummy_photo"]
+        "test": ["dummy_photo", '1234']
     }
 
     # desktop client gets a session id by calling this API
