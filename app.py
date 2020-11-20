@@ -6,6 +6,7 @@ from flask import jsonify
 from flask_cors import CORS, cross_origin
 import random
 import string
+from src.helpers.sms import send_sms_to
 
 
 def create_app():
@@ -18,10 +19,18 @@ def create_app():
     }
 
     # desktop client gets a session id by calling this API
-    @app.route('/session', methods = ['GET'])
-    def generateSessionId():
+    @app.route('/session/<to_phone_number>', methods = ['GET'])
+    def generateSessionId(to_phone_number):
         app.logger.info("reached generate sessionId api")
         session_id = _get_random_string(8)
+        send_sms_to(
+            # to_phone_number="+18313468659",
+            to_phone_number=to_phone_number,
+            message="[Yelp-hackathon-test] https://ericucsc.github.io/photo-cross-platform-mobile-client/{}".format(
+                session_id
+            ),
+        )
+
         try:
             res = {
                 'status': 200,
