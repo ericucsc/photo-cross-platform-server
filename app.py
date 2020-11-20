@@ -26,7 +26,7 @@ def create_app():
         send_sms_to(
             # to_phone_number="+18313468659",
             to_phone_number=to_phone_number,
-            message="[Yelp-hackathon-test] https://ericucsc.github.io/photo-cross-platform-mobile-client/{}".format(
+            message="[Yelp-hackathon-test] https://ericucsc.github.io/photo-cross-platform-mobile-client/#{}".format(
                 session_id
             ),
         )
